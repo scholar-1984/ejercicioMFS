@@ -22,9 +22,8 @@
 
             @foreach ($records as $record)
                 <tr>
-                    <td>{{ $record->author_id }} </td>
+                    <td>{{ $record->category_id }} </td>
                     <td>{{ $record->name }}</td>
-                    <td>{{ $record->nationality }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
+use App\Models\Category;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
-class AuthorController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-        $table = Helper::getColsNamesAndData('authors', Author::class);
+       //
+       $table = Helper::getColsNamesAndData('categories', Category::class);
 
-        return view('author.index', ['records' => $table['all_records'], 'cols' => $table['colum_names']]);
+        return view('category.index', ['records' => $table['all_records'], 'cols' => $table['colum_names']]);
     }
 
     /**
@@ -30,7 +30,7 @@ class AuthorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
         //
     }
@@ -38,7 +38,7 @@ class AuthorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Author $author)
+    public function show(Category $category)
     {
         //
     }
@@ -46,7 +46,7 @@ class AuthorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Author $author)
+    public function edit(Category $category)
     {
         //
     }
@@ -54,7 +54,7 @@ class AuthorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Author $author)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
         //
     }
@@ -62,7 +62,7 @@ class AuthorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Author $author)
+    public function destroy(Category $category)
     {
         //
     }
