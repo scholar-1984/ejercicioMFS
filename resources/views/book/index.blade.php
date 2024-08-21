@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Listado categorías</title>
+    <title>Listado libros</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 
@@ -22,8 +22,11 @@
 
             @foreach ($records as $record)
                 <tr>
-                    <td>{{ $record->category_id }} </td>
-                    <td>{{ $record->name }}</td>
+                    <td>{{ $record->book_id }} </td>
+                    <td>{{ $record->title }}</td>
+                    <td>{{ $record->author_id }} </td>
+                    <td>{{ $record->category_id }}</td>
+                    <td>{{ $record->price }} </td>
                 </tr>
             @endforeach
         </tbody>
