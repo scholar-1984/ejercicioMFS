@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id('sale_id');
-            $table->foreignIdFor(Book::class);
+            $table->foreignId('book_id');
             $table->date('sale_date');
             $table->integer('quantity');
             $table->timestamps();

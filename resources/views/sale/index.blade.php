@@ -23,7 +23,7 @@
             @foreach ($records as $record)
                 <tr>
                     <td>{{ $record->sale_id }} </td>
-                    <td>{{ $record->book_book_id }}</td>
+                    <td>{{ $record->book_id }}</td>
                     <td>{{ $record->sale_date }} </td>
                     <td>{{ $record->quantity }}</td>
                 </tr>

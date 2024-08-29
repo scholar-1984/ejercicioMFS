@@ -14,3 +14,6 @@ Route::get('/author', [AuthorController::class,'index']);
 Route::get('/category', [CategoryController::class,'index']);
 Route::get('/book', [BookController::class,'index']);
 Route::get('/sale', [SaleController::class,'index']);
+Route::get('/book/new', [BookController::class,'create']);
+Route::post('/book/new',[BookController::class,'store']);
+

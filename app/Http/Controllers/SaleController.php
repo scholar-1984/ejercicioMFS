@@ -5,18 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\Sale;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\UpdateSaleRequest;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Http\Request;
 
 class SaleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $table = Helper::getColsNamesAndData('sales', Sale::class);
+        if (isset($request->desired_book)) {
+            $book_sales = Sale::where('book_id', $request->desired_book)->get();
+            if (count($book_sales)==0) {
+                return view('sale.nosalesfound');
+            } else {
+                $cols = Schema::getColumnListing('sales');
+                array_pop($cols);
+                array_pop($cols);
+                return view('sale.index', ['records' => $book_sales, 'cols' => $cols]);
+            }
+        } else {
+            $table = Helper::getColsNamesAndData('sales', Sale::class);
 
-        return view('sale.index', ['records' => $table['all_records'], 'cols' => $table['colum_names']]);
+            return view('sale.index', ['records' => $table['all_records'], 'cols' => $table['colum_names']]);
+        }
     }
 
     /**
