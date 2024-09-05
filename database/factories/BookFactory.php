@@ -19,8 +19,8 @@ class BookFactory extends Factory
         return [
             //
             'title' => fake()->sentence(4,false),
-            'author_id' => fake()->numberBetween(0,100),
-            'category_id' => fake()->numberBetween(0,20),
+            'author_id' => fake()->numberBetween(1,100),
+            'category_id' => fake()->numberBetween(1,20),
             'price' => fake()->randomFloat(2,1,99999)
         ];
     }

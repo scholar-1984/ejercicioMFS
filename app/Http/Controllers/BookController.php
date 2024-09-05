@@ -28,7 +28,7 @@ class BookController extends Controller
     {
         $all_authors = Author::all();
         $all_categories = Category::all();
-        return view('book.create',['authors' => $all_authors, 'categories' => $all_categories]);
+        return view('book.create', ['authors' => $all_authors, 'categories' => $all_categories]);
     }
 
     /**
@@ -43,7 +43,7 @@ class BookController extends Controller
         $new->category_id = $request->category_id;
         $new->price = $request->price;
         $new->save();
-        return redirect()->action([BookController::class,'index']);
+        return redirect()->action([BookController::class, 'index']);
     }
 
     /**
