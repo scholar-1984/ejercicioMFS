@@ -11,7 +11,7 @@ class Helper
         $cols->pop();
 
 
-        return ['colum_names' => $cols, 'all_records' => $data];
+        return ['column_names' => $cols, 'all_records' => $data];
     }
 
 }

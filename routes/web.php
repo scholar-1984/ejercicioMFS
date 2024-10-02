@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
@@ -29,3 +30,7 @@ Route::get('/queryDB3',[QueryController::class,'QueryDB3']);
 Route::get('/queryDB4',[QueryController::class,'QueryDB4']);
 Route::get('/queryDB5',[QueryController::class,'QueryDB5']);
 Route::get('/queryDB6',[QueryController::class,'QueryDB6']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

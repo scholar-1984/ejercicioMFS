@@ -16,7 +16,19 @@ class AuthorController extends Controller
         //
         $table = Helper::getColsNamesAndData('authors', Author::class);
 
-        return view('author.index', ['records' => $table['all_records'], 'cols' => $table['colum_names']]);
+        //return view('author.index', ['records' => $table['all_records'], 'cols' => $table['colum_names']]);
+        $headers = [];
+        $headers[] = ['icon' => 'fas fa-id-badge', 'title' => 'Autor'];
+        $headers[] = ['icon' => 'fas fa-user', 'title' => 'Nombre'];
+        $headers[] = ['icon' => 'fas fa-flag', 'title' => 'Nacionalidad'];
+        $records = [];
+        foreach ($table['all_records'] as $record) {
+            $records[] = [['icon' => '', 'data' => $record->author_id],
+            ['icon' => 'fas fa-pen-nib', 'data' => $record->name],
+            ['icon' => '', 'data' => $record->nationality]];
+        }
+
+        return view('author.authors_table', ['records' => $records, 'headers' => $headers]);
     }
 
     /**

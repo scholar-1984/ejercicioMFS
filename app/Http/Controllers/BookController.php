@@ -18,7 +18,7 @@ class BookController extends Controller
         //
         $table = Helper::getColsNamesAndData('books', Book::class);
 
-        return view('book.index', ['records' => $table['all_records'], 'cols' => $table['colum_names']]);
+        return view('book.index', ['records' => $table['all_records'], 'cols' => $table['column_names']]);
     }
 
     /**
