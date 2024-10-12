@@ -1,13 +1,10 @@
-<div>
-    <tbody>
-        @foreach ($records as $record)
-
-            <tr>
-                @foreach ($record as $data)
+<tbody>
+    @foreach ($records as $record)
+        <tr>
+            @foreach ($record as $data)
                 <td><i class="{{ $data['icon'] }}"></i>{{ $data['data'] }} </td>
-                @endforeach
+            @endforeach
 
-            </tr>
-        @endforeach
-    </tbody>
-</div>
+        </tr>
+    @endforeach
+</tbody>

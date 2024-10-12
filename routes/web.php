@@ -10,8 +10,7 @@ use App\Http\Controllers\QueryController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
+})->name('welcome');
 Route::get('/author', [AuthorController::class,'index']);
 Route::get('/category', [CategoryController::class,'index']);
 Route::get('/book', [BookController::class,'index']);

@@ -10,6 +10,10 @@ use App\Http\Requests\UpdateBookRequest;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */

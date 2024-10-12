@@ -11,12 +11,16 @@ class AuthorController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //
         $table = Helper::getColsNamesAndData('authors', Author::class);
 
-        //return view('author.index', ['records' => $table['all_records'], 'cols' => $table['colum_names']]);
         $headers = [];
         $headers[] = ['icon' => 'fas fa-id-badge', 'title' => 'Autor'];
         $headers[] = ['icon' => 'fas fa-user', 'title' => 'Nombre'];

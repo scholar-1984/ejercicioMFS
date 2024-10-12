@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -27,6 +31,27 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
+    public function login(Request $request): RedirectResponse
+    {
+
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        $roles = ['Administrador', 'Editor'];
+        foreach ($roles as $role) {
+            $credentials['roles'] = $role;
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+
+                return redirect()->intended('home');
+            }
+        }
+
+        $errores['autorizado'] = 'No estás autorizado a acceder!';
+        return back()->withErrors($errores)->onlyInput('email');
+    }
     /**
      * Create a new controller instance.
      *
