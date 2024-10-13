@@ -45,7 +45,7 @@ class AuthorController extends Controller
         $controls = [];
         $controls[]= FormControl::createControlArray('fas fa-user','Nombre','text','name','Ingrese el nombre del autor');
         $controls[]= FormControl::createControlArray('fas fa-flag','Nacionalidad','text','nationality','Ingrese la nacionalidad');
-        return view('author.author_create',['action' => route('author.create'),'method' => 'POST', 'verb' => '', 'controls' => $controls]);
+        return view('author.author_create',['action' => route('author.store'),'method' => 'POST', 'verb' => '', 'controls' => $controls]);
     }
 
     /**
@@ -53,7 +53,6 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //return dd($request->input());
         $new_author = new Author();
         $new_author->name = $request->name;
         $new_author->nationality = $request->nationality;

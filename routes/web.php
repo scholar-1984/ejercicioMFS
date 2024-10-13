@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\QueryController;
 
@@ -15,15 +16,15 @@ Route::get('/', function () {
 Route::controller(AuthorController::class)->group(function () {
     Route::get('/author', 'index')->name('author.index');
     Route::get('/author/new', 'create')->name('author.create');
-    Route::post('/author/new', 'store')->name('author.store');
+    Route::post('/author', 'store')->name('author.store');
 });
 
 Route::get('/category', [CategoryController::class, 'index']);
 
 Route::controller(BookController::class)->group(function () {
-    Route::get('/book', 'index');
-    Route::get('/book/new', 'create');
-    Route::post('/book/new', 'store');
+    Route::get('/book', 'index')->name('book.index');
+    Route::get('/book/new', 'create')->name('book.new');
+    Route::post('/book', 'store')->name('book.store');
 });
 
 Route::get('/sale', [SaleController::class, 'index']);
@@ -43,7 +44,9 @@ Route::controller(QueryController::class)->group(function () {
     Route::get('/queryDB6', 'QueryDB6');
 });
 
-
+Route::controller(ImageController::class)->group(function(){
+    Route::get('/image/{book_id}/edit','edit')->name('image.edit');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

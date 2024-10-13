@@ -19,7 +19,6 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
         $table = Helper::getColsNamesAndData('books', Book::class);
 
         return view('book.index', ['records' => $table['all_records'], 'cols' => $table['column_names']]);
@@ -40,14 +39,13 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
         $new = new Book();
         $new->title = $request->title;
         $new->author_id = $request->author_id;
         $new->category_id = $request->category_id;
         $new->price = $request->price;
         $new->save();
-        return redirect()->action([BookController::class, 'index']);
+        return redirect()->back()->with('status','Libro creado con exito!');
     }
 
     /**

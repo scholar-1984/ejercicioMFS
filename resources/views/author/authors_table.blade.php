@@ -29,7 +29,7 @@
         <h1 class="text-center">Autores</h1>
         <x-common.table :$headers :$records/>
 
-        <a href="author_create.html" class="btn btn-primary btn-create">
+        <a href="{{route('author.create')}}" class="btn btn-primary btn-create">
             <i class="fas fa-plus"></i> Crear Autor
         </a>
     </div>

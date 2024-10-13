@@ -1,6 +1,6 @@
 @extends('layouts.app',['titulo' => 'Listado de libros'])
 @section('content')
-    <a href="{{ url('/book/new') }}"> <button type="button" class="btn btn-primary">Nuevo Registro</button></a>
+    <a href="{{route('book.new')}}"> <button type="button" class="btn btn-primary">Nuevo Registro</button></a>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -20,6 +20,8 @@
                     <td>{{ $record->price }} </td>
                     <td><a href="{{ url("/sale?desired_book=$record->book_id") }}"><button type="button"
                                 class="btn btn-primary">Visualizar Ventas</button></a></td>
+                    <td><a href="{{route('image.edit',['book_id' => $record->book_id])}}"><button type="button"
+                        class="btn btn-primary">Ver Imagen</button></a></td>
                 </tr>
             @endforeach
         </tbody>

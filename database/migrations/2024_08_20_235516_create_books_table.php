@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('author_id');
             $table->foreignId('category_id');
             $table->float('price');
+            $table->string('image',250);
             $table->timestamps();
         });
     }
