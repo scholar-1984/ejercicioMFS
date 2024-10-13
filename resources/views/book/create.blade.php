@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['titulo' => 'Crear nuevo libro'])
 @section('content')
 <div class="container">
     <form action="{{ url("/book/new")}}" method="POST">

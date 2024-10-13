@@ -32,7 +32,7 @@ class SaleController extends Controller
         } else {
             $table = Helper::getColsNamesAndData('sales', Sale::class);
 
-            return view('sale.index', ['records' => $table['all_records'], 'cols' => $table['colum_names']]);
+            return view('sale.index', ['records' => $table['all_records'], 'cols' => $table['column_names']]);
         }
     }
 

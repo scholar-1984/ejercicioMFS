@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['titulo' => 'Listado de libros'])
 @section('content')
     <a href="{{ url('/book/new') }}"> <button type="button" class="btn btn-primary">Nuevo Registro</button></a>
     <table class="table table-striped table-hover">

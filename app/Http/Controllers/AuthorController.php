@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use App\View\Components\common\Form;
+use App\View\Components\common\FormControl;
 
 class AuthorController extends Controller
 {
@@ -40,7 +42,10 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        $controls = [];
+        $controls[]= FormControl::createControlArray('fas fa-user','Nombre','text','name','Ingrese el nombre del autor');
+        $controls[]= FormControl::createControlArray('fas fa-flag','Nacionalidad','text','nationality','Ingrese la nacionalidad');
+        return view('author.author_create',['action' => route('author.create'),'method' => 'POST', 'verb' => '', 'controls' => $controls]);
     }
 
     /**
@@ -48,7 +53,12 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return dd($request->input());
+        $new_author = new Author();
+        $new_author->name = $request->name;
+        $new_author->nationality = $request->nationality;
+        $new_author->save();
+        return redirect()->back()->with('status','Autor creado con exito!');
     }
 
     /**

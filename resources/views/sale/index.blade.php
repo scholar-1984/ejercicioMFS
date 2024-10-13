@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['titulo' => 'Listado de ventas'])
 @section('content')
     <table class="table table-striped table-hover">
         <thead>

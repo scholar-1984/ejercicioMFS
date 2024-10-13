@@ -11,24 +11,38 @@ use App\Http\Controllers\QueryController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-Route::get('/author', [AuthorController::class,'index']);
-Route::get('/category', [CategoryController::class,'index']);
-Route::get('/book', [BookController::class,'index']);
-Route::get('/sale', [SaleController::class,'index']);
-Route::get('/book/new', [BookController::class,'create']);
-Route::post('/book/new',[BookController::class,'store']);
-Route::get('/queryORM1',[QueryController::class,'QueryORM1']);
-Route::get('/queryORM2',[QueryController::class,'QueryORM2']);
-Route::get('/queryORM3',[QueryController::class,'QueryORM3']);
-Route::get('/queryORM4',[QueryController::class,'QueryORM4']);
-Route::get('/queryORM5',[QueryController::class,'QueryORM5']);
-Route::get('/queryORM6',[QueryController::class,'QueryORM6']);
-Route::get('/queryDB1',[QueryController::class,'QueryDB1']);
-Route::get('/queryDB2',[QueryController::class,'QueryDB2']);
-Route::get('/queryDB3',[QueryController::class,'QueryDB3']);
-Route::get('/queryDB4',[QueryController::class,'QueryDB4']);
-Route::get('/queryDB5',[QueryController::class,'QueryDB5']);
-Route::get('/queryDB6',[QueryController::class,'QueryDB6']);
+
+Route::controller(AuthorController::class)->group(function () {
+    Route::get('/author', 'index')->name('author.index');
+    Route::get('/author/new', 'create')->name('author.create');
+    Route::post('/author/new', 'store')->name('author.store');
+});
+
+Route::get('/category', [CategoryController::class, 'index']);
+
+Route::controller(BookController::class)->group(function () {
+    Route::get('/book', 'index');
+    Route::get('/book/new', 'create');
+    Route::post('/book/new', 'store');
+});
+
+Route::get('/sale', [SaleController::class, 'index']);
+
+Route::controller(QueryController::class)->group(function () {
+    Route::get('/queryORM1', 'QueryORM1');
+    Route::get('/queryORM2', 'QueryORM2');
+    Route::get('/queryORM3', 'QueryORM3');
+    Route::get('/queryORM4', 'QueryORM4');
+    Route::get('/queryORM5', 'QueryORM5');
+    Route::get('/queryORM6', 'QueryORM6');
+    Route::get('/queryDB1', 'QueryDB1');
+    Route::get('/queryDB2', 'QueryDB2');
+    Route::get('/queryDB3', 'QueryDB3');
+    Route::get('/queryDB4', 'QueryDB4');
+    Route::get('/queryDB5', 'QueryDB5');
+    Route::get('/queryDB6', 'QueryDB6');
+});
+
 
 Auth::routes();
 
